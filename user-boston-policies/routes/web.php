@@ -25,4 +25,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
   
     $router->put('users/{id}', ['uses' => 'UserController@update']);
+    
+    $router->put('users/validate/{id}', ['uses' => 'UserController@validateUser']);
   });
