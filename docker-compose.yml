@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: boston_tweb
+      MYSQL_USER: bostonrootuser
+      MYSQL_PASSWORD: 8Md3rp6ty
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+  account.api:
+    build:
+      context: .
+      dockerfile: ./microservices/user-microservice/Dockerfile
+    command: >
+      bash -c "cd /var/www/html
+      && composer install
+      && php artisan migrate
+      && apachectl -D FOREGROUND"
+    ports:
+      - 8081:80
+    tty: true
+    volumes:
+      - ./microservices/user-microservice/user-boston-policies:/var/www/html
+    links:
+      - mysqldb:mysql

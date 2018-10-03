@@ -22,4 +22,4 @@ The Lumen framework is open-sourced software licensed under the [MIT license](ht
 
 ## Launch
 
-php -s localhost:8000 -t public
+php -S localhost:8000 -t public
