@@ -1,0 +1,22 @@
+{
+  "name": "hapi-boston",
+  "version": "1.0.0",
+  "description": "hapi js to call microservices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^2.0.1",
+    "good": "^8.1.1",
+    "good-console": "^7.1.0",
+    "good-squeeze": "^5.1.0",
+    "hapi": "^17.6.0",
+    "joi": "^13.7.0",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0"
+  }
+}
