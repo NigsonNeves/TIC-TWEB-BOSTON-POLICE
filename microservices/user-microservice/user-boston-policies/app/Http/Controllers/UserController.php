@@ -17,7 +17,12 @@ class UserController extends Controller
 
     public function showOneUser($id)
     {
-        return response()->json(User::find($id));
+        try {
+            $user = User::findOrFail($id);
+        } catch(ModelNotFoundException $ex) {
+            return response()->json("user doesn't exist", 404);
+        }
+        return response()->json($user);
     }
 
     public function create(Request $request)

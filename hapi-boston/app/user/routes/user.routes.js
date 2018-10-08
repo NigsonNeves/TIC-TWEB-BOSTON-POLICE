@@ -6,27 +6,77 @@ exports.plugin = {
 
         server.route({
             method: 'GET',
-            path: '/test',
-            handler: UserController.Get
+            path: '/api/users',
+            handler: UserController.showAllUsers
+        });
+
+        server.route({
+            method: 'GET',
+            path: '/api/users/{idUser}',
+            handler: UserController.showOneUser,
+            config: {
+                validate: {
+                    params: {
+                        idUser: Joi.number()
+                    }
+                }
+            }
         });
 
         server.route({
             method: 'POST',
-            path: '/testPost',
+            path: '/api/users',
             config: {
                 payload: {
                     parse: true
                 },
                 validate: {
                     payload: Joi.object({
-                        user: Joi.number(),
-                        test: Joi.bool().required()
+                        grade: Joi.number().required(),
+                        email: Joi.string().email().required(),
+                        password: Joi.required()
                     })
                 }
             },
-            handler: function (request, h) {
-                return request.payload;
-            }
+            handler: UserController.create
+        });
+
+        server.route({
+            method: 'PUT',
+            path: '/api/users/{idUser}',
+            config: {
+                payload: {
+                    parse: true
+                },
+                validate: {
+                    params: {
+                        idUser: Joi.number()
+                    },
+                    payload: Joi.object({
+                        grade: Joi.number(),
+                        email: Joi.string().email(),
+                        confirmed: Joi.boolean(),
+                        password: Joi.string()
+                    })
+                }
+            },
+            handler: UserController.update
+        });
+
+        server.route({
+            method: 'DELETE',
+            path: '/api/users/{idUser}',
+            config: {
+                payload: {
+                    parse: true
+                },
+                validate: {
+                    params: {
+                        idUser: Joi.number()
+                    }
+                }
+            },
+            handler: UserController.delete
         });
     },
     "name": "usersRoot"
