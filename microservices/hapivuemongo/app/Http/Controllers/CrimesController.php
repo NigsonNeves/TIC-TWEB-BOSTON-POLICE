@@ -7,6 +7,7 @@ use App\Crimes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Validator;
 
 class CrimesController extends Controller
 {
@@ -171,34 +172,37 @@ class CrimesController extends Controller
 
     public function createCrime(Request $request)
     {
-        var_dump($request->all());
 
-        $this->validate($request, [
-            'compnos' => 'integer|max:9',
-            'naturecode' => 'string|max:255',
-            'incident_type_description' => 'string|max:255',
-            'main_crimecode' => 'string|max:255',
-            'reptdistrict' => 'string',
-            'reportingarea' => 'integer|max:1',
-            'fromdate' => 'string|max:255',
-            'weapontype' => 'string|max:255',
-            'shooting' => 'string|max:10',
-            'domestic' => 'string|max:10',
-            'shift' => 'string|max:255',
-            'year' => 'integer|max:4',
-            'month' => 'integer|max:2',
-            'day_week' => 'string|max:15',
-            'ucrpart' => 'string|max:255',
-            'x' => 'float',
-            'y' => 'float',
-            'streetname' => 'string|max:255',
-            'xstreetname' => 'string|max:255',
-            'location' => 'string|max:255',
+        $validator = \Validator::make($request->all(), [
+            'compnos' => 'required|integer',
+            'naturecode' => 'required|string|max:50',
+            'incident_type_description' => 'required|string|max:50',
+            'main_crimecode' => 'required|string|max:50',
+            'reptdistrict' => 'required|string|max:50',
+            'reportingarea' => 'required|integer|digits:1',
+            'fromdate' => 'required|string|max:50',
+            'weapontype' => 'required|string|max:50',
+            'shooting' => 'required|string',
+            'domestic' => 'required|string',
+            'shift' => 'required|string|max:50',
+            'year' => 'required|integer|digits:4',
+            'month' => 'required|integer',
+            'day_week' => 'required|string|max:15',
+            'ucrpart' => 'required|string|max:255',
+            'x' => 'required|numeric',
+            'y' => 'required|numeric',
+            'streetname' => 'required|string|max:50',
+            'xstreetname' => 'required|string|max:50',
+            'location' => 'required|string|max:50',
         ]);
 
+        if ($validator->fails()) {
+            return $validator->errors();;
+        }
 
-        //$crimes = DB::connection('mongodb')->collection('crimes')->insert([$request->all()]);
-        //return response()->json(["Crimes inserted succefully",200]);
+        $crimes = Crimes::create($request->all());
+
+        return response()->json([$crimes,201]);
     }
 
     public function deleteCrime(Request $request)

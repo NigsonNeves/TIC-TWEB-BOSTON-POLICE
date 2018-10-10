@@ -17,16 +17,16 @@ $router->get('/', function () use ($router) {
 
 $router->get('/crimes','CrimesController@index');
 $router->get('/search','CrimesController@search');
-$router->get('/findBy/id/{id}','CrimesController@byId');
-$router->get('/findBy/compnos/{compnos}','CrimesController@byCompnos');
-$router->get('/findBy/weapons/{weapon}','CrimesController@byWeapon');
-$router->get('/findBy/streetname/{streetname}','CrimesController@byStreet');
-$router->get('/findBy/month/{month}','CrimesController@byMonth');
-$router->get('/findBy/day/{day}','CrimesController@byDay');
-$router->get('/findBy/ucrpart/{ucrpart}','CrimesController@byUcrpart');
-$router->get('/findBy/type/{type}','CrimesController@byType');
-$router->get('/findBy/nature/{nature}','CrimesController@byNature');
-$router->get('/findBy/district/{natudistrictre}','CrimesController@byDistrict');
+$router->get('/crimes/findBy/id/{id}','CrimesController@byId');
+$router->get('/crimes/findBy/compnos/{compnos}','CrimesController@byCompnos');
+$router->get('/crimes/findBy/weapons/{weapon}','CrimesController@byWeapon');
+$router->get('/crimes/findBy/streetname/{streetname}','CrimesController@byStreet');
+$router->get('/crimes/findBy/month/{month}','CrimesController@byMonth');
+$router->get('/crimes/findBy/day/{day}','CrimesController@byDay');
+$router->get('/crimes/findBy/ucrpart/{ucrpart}','CrimesController@byUcrpart');
+$router->get('/crimes/findBy/type/{type}','CrimesController@byType');
+$router->get('/crimes/findBy/nature/{nature}','CrimesController@byNature');
+$router->get('/crimes/findBy/district/{natudistrictre}','CrimesController@byDistrict');
 
 $router->post('/crimes','CrimesController@createCrime');
 $router->delete('/crimes/{id}','CrimesController@deleteCrime');
