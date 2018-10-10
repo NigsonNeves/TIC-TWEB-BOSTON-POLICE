@@ -8,26 +8,6 @@
     </ul>
   </p>
 
-  <p v-if="success.length">
-    <b>Congrats</b>
-    <ul id="ul-success">
-      <li v-for="suc in success" :key="suc.id">{{ suc }}</li>
-    </ul>
-  </p>
-
-  <p>
-      <label for="grade">Grade</label>
-      <select
-        id="grade"
-        v-model="grade"
-        name="grade"
-      >
-        <option value="chef">Chef</option>
-        <option value="detective">Detective</option>
-        <option value="agent" selected>Agent</option>
-      </select>
-  </p>
-
   <p>
     <label for="email">Email</label>
     <input
@@ -46,21 +26,13 @@
       name="password"
     >
   </p>
-  <p>
-    <label for="rePassword">Confirm password</label>
-    <input
-      id="rePassword"
-      v-model="rePassword"
-      type="password"
-    >
-  </p>
 
 
   <p>
     <input
       type="button"
       value="Submit"
-      @click="postInscription"
+      @click="postConnexion"
     >
   </p>
 
@@ -76,16 +48,14 @@ export default {
     return {
     errors: [],
     success: [],
-    grade: null,
     email: null,
-    password: null,
-    rePassword: null
+    password: null
     }
   },
   methods:{
     postInscription(e) {
       this.errors = [];
-      if (this.grade && this.email && this.password && this.rePassword) {
+      if (this.email && this.password) {
 
         if (this.password != this.rePassword) {
           this.errors.push('Passwords must be the same');
@@ -98,27 +68,19 @@ export default {
           password: this.password
         }))
         .then(response => {
-          this.success.push("Inscription successfull, you should wait until confirmation")
         })
         .catch(err => {
-          this.errors.push(err.response.data);
+          this.errors.push();
           e.preventDefault();
           return false;
         })
         return true;
-      }
-
-      if (!this.grade) {
-        this.errors.push('Grade required.');
       }
       if (!this.email) {
         this.errors.push('Email required.');
       }
       if (!this.password) {
         this.errors.push('Password required.');
-      }
-      if (!this.rePassword) {
-        this.errors.push('Confirm password required.');
       }
 
       e.preventDefault();

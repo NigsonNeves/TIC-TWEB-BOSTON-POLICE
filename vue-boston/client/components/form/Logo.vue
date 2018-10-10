@@ -1,11 +1,11 @@
 <template>
 <div>
-    <img src="../../../static/boston-logo.png">
+    <img id="logo-fbi" src="../../../static/FBI.png">
 </div>
 </template>
 
 <style>
-    img {
+    #logo-fbi {
         width: 30%;
     }
 </style>
