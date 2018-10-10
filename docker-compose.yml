@@ -47,13 +47,14 @@ services:
       bash -c "cd /var/www/html
       && composer install
       && composer update
+      && composer dump-autoload
       && apachectl -D FOREGROUND"
     ports:
       - 8083:80
     tty: true
     restart: on-failure
     volumes:
-      - ./microservices/crime-microservice/hapivuemongo:/var/www/html
+      - ./microservices/crime-microservice/boston-crimes:/var/www/html
     links:
       - mongodb:mongo
       - account.api
