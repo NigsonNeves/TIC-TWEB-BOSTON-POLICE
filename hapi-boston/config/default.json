@@ -2,5 +2,9 @@
     "api" : {
         "port": 3000,
         "host": "localhost"
+    },
+
+    "route" : {
+        "userUrl": "http://localhost:8081/api/users"
     }
 }

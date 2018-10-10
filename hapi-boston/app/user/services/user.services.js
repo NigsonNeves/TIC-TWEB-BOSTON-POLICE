@@ -1,10 +1,11 @@
+const Config = require('config')
 const Request = require('request');
 const ResultApi = require('../../helpers/result.helpers')
 
-class UserModel {
+class UserService {
     async showAllUsers() {
         return new Promise((resolve, reject) => {
-            Request('http://localhost:8081/api/users', function (error, response, body) {
+            Request(Config.route.userUrl, function (error, response, body) {
                 const Result = new ResultApi(body, response, error);
                 if (error) {
                     reject(Result);
@@ -17,7 +18,7 @@ class UserModel {
 
     async showOneUser(idUser) {
         return new Promise((resolve, reject) => {
-            Request('http://localhost:8081/api/users/' + idUser, function (error, response, body) {
+            Request(Config.route.userUrl + '/' + idUser, function (error, response, body) {
                 const Result = new ResultApi(body, response, error);
                 if (error) {
                     reject(Result);
@@ -30,7 +31,7 @@ class UserModel {
 
     async create(grade, email, password) {
         return new Promise((resolve, reject) => {
-            Request.post({ url : 'http://localhost:8081/api/users', form: { 
+            Request.post({ url : Config.route.userUrl, form: { 
                 grade: grade,
                 email: email,
                 password: password
@@ -48,7 +49,7 @@ class UserModel {
 
     async update(grade, email, password, confirmed, idUser) {
         return new Promise((resolve, reject) => {
-            Request.put({ url : 'http://localhost:8081/api/users/' + idUser, form: { 
+            Request.put({ url : Config.route.userUrl + '/' + idUser, form: { 
                 grade: grade,
                 email: email,
                 password: password,
@@ -68,7 +69,7 @@ class UserModel {
 
     async validateUser(idUser, idAdmin) {
         return new Promise((resolve, reject) => {
-            Request.put({ url : 'http://localhost:8081/api/users/validate/' + idUser, form: { 
+            Request.put({ url : Config.route.userUrl + '/validate/' + idUser, form: { 
                 idAdmin: idAdmin
             }},
             function(err , httpResponse, body) {
@@ -84,7 +85,7 @@ class UserModel {
 
     async delete(idUser) {
         return new Promise((resolve, reject) => {
-            Request.delete({ url : 'http://localhost:8081/api/users/' + idUser},
+            Request.delete({ url : Config.route.userUrl + '/' + idUser},
             function(err , httpResponse, body) {
                 const Result = new ResultApi(body, httpResponse, err);
                 if (err) {
@@ -97,4 +98,4 @@ class UserModel {
     };
 }
 
-module.exports = new UserModel();
+module.exports = new UserService();
