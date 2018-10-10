@@ -23,6 +23,7 @@ const server = Hapi.server({
     host: Config.get('api.host'),
     port: Config.get('api.port'),
     routes: {
+        cors: true,
         validate: {
           failAction: async (request, h, err) => {
             if (process.env.NODE_ENV === 'production') {

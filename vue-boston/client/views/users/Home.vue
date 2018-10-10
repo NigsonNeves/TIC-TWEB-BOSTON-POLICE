@@ -2,7 +2,7 @@
   <div class="page">
     <p>
       <logo></logo>
-      <a href="/inscription"><button>Connexion</button></a>
+      <a href="/connexion"><button>Connexion</button></a>
       <a href="/inscription"><button>Inscription</button></a>
     </p>
   </div>

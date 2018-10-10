@@ -1,8 +1,19 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+  <Header></Header>
+  <router-view></router-view>
   </div>
 </template>
+
+<script>
+import Header from './shared/Header'
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+
 
 <style>
 body {
@@ -22,6 +33,14 @@ body {
 #ul-error {
   list-style: none;
   border: 1px solid red;
+  width: 50%;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+#ul-success {
+  list-style: none;
+  border: 1px solid green;
   width: 50%;
   padding: 10px;
   margin: 10px auto;

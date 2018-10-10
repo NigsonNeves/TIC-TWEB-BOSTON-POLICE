@@ -1,16 +1,17 @@
 <template>
 <div class="page">
-<form
-  id="app"
-  @submit="checkForm"
-  action="https://vuejs.org/"
-  method="post"
->
 
   <p v-if="errors.length">
     <b>Please correct the following error(s):</b>
     <ul id="ul-error">
       <li v-for="error in errors" :key="error.id">{{ error }}</li>
+    </ul>
+  </p>
+
+  <p v-if="success.length">
+    <b>Congrats</b>
+    <ul id="ul-success">
+      <li v-for="suc in success" :key="suc.id">{{ suc }}</li>
     </ul>
   </p>
 
@@ -51,27 +52,30 @@
       id="rePassword"
       v-model="rePassword"
       type="password"
-      name="rePassword"
     >
   </p>
 
 
   <p>
     <input
-      type="submit"
+      type="button"
       value="Submit"
+      @click="postInscription"
     >
   </p>
 
-</form>
 </div>
 </template>
 
 <script>
+import axios from 'axios';
+import querystring from 'querystring'
+
 export default {
   data() {
     return {
     errors: [],
+    success: [],
     grade: null,
     email: null,
     password: null,
@@ -79,7 +83,8 @@ export default {
     }
   },
   methods:{
-    checkForm(e) {
+    postInscription(e) {
+      this.errors = [];
       if (this.grade && this.email && this.password && this.rePassword) {
 
         if (this.password != this.rePassword) {
@@ -87,10 +92,21 @@ export default {
           e.preventDefault();
           return false;
         }
+        axios.post("http://localhost:8080/api/users", querystring.stringify({
+          grade: this.grade,
+          email: this.email,
+          password: this.password
+        }))
+        .then(response => {
+          this.success.push("Inscription successfull, you should wait until confirmation")
+        })
+        .catch(err => {
+          this.errors.push(err.response.data);
+          e.preventDefault();
+          return false;
+        })
         return true;
       }
-
-      this.errors = [];
 
       if (!this.grade) {
         this.errors.push('Grade required.');
