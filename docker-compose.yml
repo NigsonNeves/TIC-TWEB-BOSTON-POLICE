@@ -11,6 +11,16 @@ services:
       - ./db/mysql:/var/lib/mysql
     restart: always
     command: --default-authentication-plugin=mysql_native_password
+  mongodb:
+    image: mongo:latest
+    restart: always
+    command: mongod --smallfiles
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./db/mongodb:/data/db
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   account.api:
     build:
       context: .
@@ -27,3 +37,24 @@ services:
       - ./microservices/user-microservice/user-boston-policies:/var/www/html
     links:
       - mysqldb:mysql
+  crime.api:
+    build:
+      context: .
+      dockerfile: ./microservices/crime-microservice/Dockerfile
+    depends_on:
+      - mongodb
+    command: >
+      bash -c "cd /var/www/html
+      && composer install
+      && composer update
+      && apachectl -D FOREGROUND"
+    ports:
+      - 8083:80
+    tty: true
+    restart: on-failure
+    volumes:
+      - ./microservices/crime-microservice/hapivuemongo:/var/www/html
+    links:
+      - mongodb:mongo
+      - account.api
+
