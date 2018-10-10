@@ -28,7 +28,8 @@ services:
     command: >
       bash -c "cd /var/www/html
       && composer install
-      && php artisan migrate
+      && php artisan migrate:fresh
+      && php artisan db:seed
       && apachectl -D FOREGROUND"
     ports:
       - 8081:80
