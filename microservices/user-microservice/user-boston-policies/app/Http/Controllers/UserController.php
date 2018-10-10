@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'grade' => 'required',
+            'grade' => 'required|string|in:agent,detective,chef',
             'email' => 'required|email|unique:users',
             'password' => 'required'
         ]);
@@ -45,6 +45,7 @@ class UserController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
+            'grade' => 'string|in:agent,detective,chef',
             'email' => 'email|unique:users',
             'confirmed' => 'boolean'
         ]);
@@ -74,7 +75,7 @@ class UserController extends Controller
         } catch(ModelNotFoundException $ex) {
             return response()->json("admin doesn't exist", 404);
         }
-        if ($userAdmin->grade > 3 && $userAdmin->confirmed){
+        if (($userAdmin->grade == "detective" || $userAdmin->grade == "chef") && $userAdmin->confirmed){
             try {
                 $user = User::findOrFail($id);
             } catch(ModelNotFoundException $ex) {

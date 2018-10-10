@@ -32,7 +32,7 @@ exports.plugin = {
                 },
                 validate: {
                     payload: Joi.object({
-                        grade: Joi.number().required(),
+                        grade: Joi.string().required(),
                         email: Joi.string().email().required(),
                         password: Joi.required()
                     })
@@ -53,7 +53,7 @@ exports.plugin = {
                         idUser: Joi.number()
                     },
                     payload: Joi.object({
-                        grade: Joi.number(),
+                        grade: Joi.string(),
                         email: Joi.string().email(),
                         confirmed: Joi.boolean(),
                         password: Joi.string()
