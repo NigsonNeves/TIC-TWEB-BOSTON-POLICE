@@ -13,23 +13,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      name: "home"
     },
     {
       path: '/inscription',
-      component: Inscription
+      component: Inscription,
+      name: "inscription"
     },
     {
       path: '/connexion',
-      component: Connexion
+      component: Connexion,
+      name: 'connexion'
     },
     {
       path: '/increment',
-      component: Increment
+      component: Increment,
+      name: 'increment'
     },
     {
       path: '*',
-      component: NotFound
+      component: NotFound,
+      name: 'notfound'
     }
   ]
 })

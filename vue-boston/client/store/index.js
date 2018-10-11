@@ -7,8 +7,7 @@ Vue.use(Vuex)
 const state = {
   email: null,
   password: null,
-  grade: null,
-  count: 0
+  grade: null
 }
 
 const mutations = {
@@ -17,11 +16,10 @@ const mutations = {
     state.password = payload.password;
     state.grade = payload.grade;
   },
-  INCREMENT (state) {
-    state.count++
-  },
-  DECREMENT (state) {
-    state.count--
+  signout(state) {
+    state.email = null;
+    state.password = null;
+    state.grade = null;
   }
 }
 
