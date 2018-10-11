@@ -15,11 +15,13 @@ const mutations = {
     state.email = payload.email;
     state.password = payload.password;
     state.grade = payload.grade;
+    state.id = payload.id;
   },
   signout(state) {
     state.email = null;
     state.password = null;
     state.grade = null;
+    state.id;
   }
 }
 

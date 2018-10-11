@@ -64,10 +64,12 @@ export default {
           const email = data.email;
           const grade = data.grade;
           const password = data.password;
+          const id = data.id;
           this.$store.commit('authenticate', {
               email,
               grade,
-              password
+              password,
+              id
           });
           this.$router.push({ name: "home"});
         })

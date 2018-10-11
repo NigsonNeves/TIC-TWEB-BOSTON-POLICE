@@ -23,6 +23,9 @@ export default {
     },
     grade() {
       return this.$store.state.grade
+    },
+    id() {
+      return this.$store.state.id
     }
   },
 }
