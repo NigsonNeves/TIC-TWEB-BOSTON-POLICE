@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,6 @@ const state = {
 
 const mutations = {
   authenticate(state, payload) {
-    localStorage.setItem('grade', payload.grade);
     state.email = payload.email;
     state.password = payload.password;
     state.grade = payload.grade;
@@ -34,6 +34,7 @@ const actions = {
 }
 
 const store = new Vuex.Store({
+  plugins: [createPersistedState()],
   state,
   mutations,
   actions

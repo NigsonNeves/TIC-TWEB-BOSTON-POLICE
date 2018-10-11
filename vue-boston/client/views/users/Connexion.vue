@@ -67,7 +67,7 @@ export default {
           const password = data.password;
           this.$store.commit('authenticate', {
               userId,
-              grade: "test",
+              grade,
               password
           });
         })
