@@ -82,7 +82,7 @@ exports.plugin = {
 
         server.route({
             method: 'PUT',
-            path: '/api/users/{idUser}',
+            path: '/api/users/validate/{idUser}',
             config: {
                 payload: {
                     parse: true
