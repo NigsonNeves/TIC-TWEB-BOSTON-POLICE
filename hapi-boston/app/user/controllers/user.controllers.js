@@ -19,6 +19,17 @@ class UserController {
         }
     };
 
+    async verif(request, h) {
+        const email = request.payload.email;
+        const password = request.payload.password;
+        const result = await UserService.verif(email, password);
+        if (!result.error){
+            return h.response({statusCode: result.response.statusCode, message: "success", data: result.body}).code(result.response.statusCode);
+        } else {
+            return h.response(result.error).code(result.response.statusCode);
+        }
+    };
+
     async create(request, h) {
         const grade = request.payload.grade;
         const email = request.payload.email;

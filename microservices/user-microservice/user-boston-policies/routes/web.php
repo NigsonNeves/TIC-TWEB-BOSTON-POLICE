@@ -19,6 +19,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('users',  ['uses' => 'UserController@showAllUsers']);
   
     $router->get('users/{id}', ['uses' => 'UserController@showOneUser']);
+
+    $router->post('users/verif', ['uses' => 'UserController@verifUser']);
   
     $router->post('users', ['uses' => 'UserController@create']);
   

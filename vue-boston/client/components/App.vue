@@ -1,6 +1,9 @@
 <template>
   <div id="app">
   <Header></Header>
+  {{ storeEmail }}
+  {{ storePassword }}
+  {{ storeGrade }}
   <router-view></router-view>
   </div>
 </template>
@@ -10,7 +13,18 @@ import Header from './shared/Header'
 export default {
   components: {
     Header
-  }
+  },
+  computed: {
+    storeEmail() {
+      return localStorage.getItem('grade')
+    },
+    storePassword() {
+      return this.$store.state.password
+    },
+    storeGrade() {
+      return this.$store.state.grade
+    }
+  },
 }
 </script>
 

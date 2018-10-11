@@ -29,6 +29,23 @@ class UserService {
         });
     };
 
+    async verif(email, password) {
+        return new Promise((resolve, reject) => {
+            Request.post({ url : Config.route.userUrl + "/verif", form: {
+                email: email,
+                password: password
+            }}, 
+            function(err , httpResponse, body) {
+                const Result = new ResultApi(body, httpResponse, err);
+                if (err) {
+                    reject(Result);
+                } else {
+                    resolve(Result);
+                }
+            })
+        });
+    };
+
     async create(grade, email, password) {
         return new Promise((resolve, reject) => {
             Request.post({ url : Config.route.userUrl, form: { 

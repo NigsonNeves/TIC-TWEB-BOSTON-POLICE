@@ -25,6 +25,27 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function verifUser(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|string',
+            'password' => 'required'
+        ]);
+
+        try {
+            $user = User::where('email', $request->email)->firstOrFail();
+        } catch(ModelNotFoundException $ex) {
+            return response()->json("Password or email is incorrect", 403);
+        }
+        if(!password_verify($request->password, $user->password)){
+            return response()->json("Password or email is incorrect", 403);
+        }
+        if (!$user->confirmed) {
+            return response()->json("You're not confirmed", 401);
+        }
+        return response()->json($user);
+    }
+
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -36,7 +57,7 @@ class UserController extends Controller
         $user = User::create([
             'grade' => $request->grade,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => password_hash($request->password, PASSWORD_DEFAULT, ['cost' => 15])
         ]);
 
         return response()->json($user, 201);
@@ -58,7 +79,7 @@ class UserController extends Controller
         $user->update([
             'grade' => $request->grade != null ? $request->grade : $user->grade,
             'email' => $request->email != null ? $request->email : $user->email,
-            'password' => $request->password != null ? $request->password : $user->password,
+            'password' => $request->password != null ? password_hash($request->password, PASSWORD_DEFAULT, ['cost' => 15]) : $user->password,
             'confirmed' => $request->confirmed != null ? $request->confirmed : $user->confirmed
         ]);
 

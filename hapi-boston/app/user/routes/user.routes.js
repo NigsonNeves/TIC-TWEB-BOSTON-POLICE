@@ -25,6 +25,23 @@ exports.plugin = {
 
         server.route({
             method: 'POST',
+            path: '/api/users/verif',
+            config: {
+                payload: {
+                    parse: true
+                },
+                validate: {
+                    payload: Joi.object({
+                        email: Joi.string().email().required(),
+                        password: Joi.required()
+                    })
+                }
+            },
+            handler: UserController.verif
+        });
+
+        server.route({
+            method: 'POST',
             path: '/api/users',
             config: {
                 payload: {

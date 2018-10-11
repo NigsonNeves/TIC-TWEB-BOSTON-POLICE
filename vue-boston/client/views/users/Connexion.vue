@@ -1,6 +1,5 @@
 <template>
 <div class="page">
-
   <p v-if="errors.length">
     <b>Please correct the following error(s):</b>
     <ul id="ul-error">
@@ -53,24 +52,27 @@ export default {
     }
   },
   methods:{
-    postInscription(e) {
+    postConnexion(e) {
       this.errors = [];
       if (this.email && this.password) {
-
-        if (this.password != this.rePassword) {
-          this.errors.push('Passwords must be the same');
-          e.preventDefault();
-          return false;
-        }
-        axios.post("http://localhost:8080/api/users", querystring.stringify({
-          grade: this.grade,
+        axios.post("http://localhost:8080/api/users/verif", querystring.stringify({
           email: this.email,
           password: this.password
         }))
         .then(response => {
+          const data = response.data.data
+          this.errors.push(data);
+          const userId = data.id;
+          const grade = data.grade;
+          const password = data.password;
+          this.$store.commit('authenticate', {
+              userId,
+              grade: "test",
+              password
+          });
         })
         .catch(err => {
-          this.errors.push();
+          this.errors.push(err);
           e.preventDefault();
           return false;
         })
