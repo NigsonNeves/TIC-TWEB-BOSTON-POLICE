@@ -6,7 +6,7 @@ return  [
     'connections' => [
         'mongodb' => array(
             'driver'   => 'mongodb',
-            'host'     => env('MONGODB_HOST', 'localhost'),
+            'host'     => env('MONGODB_HOST', 'mongo'),
             'port'     => env('MONGODB_PORT', 27017),
             'username' => env('MONGODB_USERNAME', 'root'),
             'password' => env('MONGODB_PASSWORD', 'root'),
