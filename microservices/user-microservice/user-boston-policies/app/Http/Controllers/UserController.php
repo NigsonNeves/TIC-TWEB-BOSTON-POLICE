@@ -96,7 +96,7 @@ class UserController extends Controller
         } catch(ModelNotFoundException $ex) {
             return response()->json("admin doesn't exist", 404);
         }
-        if (($userAdmin->grade == "detective" || $userAdmin->grade == "chef") && $userAdmin->confirmed){
+        if (($userAdmin->grade == "chef") && $userAdmin->confirmed){
             try {
                 $user = User::findOrFail($id);
             } catch(ModelNotFoundException $ex) {
