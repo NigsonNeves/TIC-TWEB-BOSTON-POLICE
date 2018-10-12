@@ -66,7 +66,6 @@ class CrimesController extends Controller
 
     public function byCompnos($compnos)
     {
-        $compnos = urldecode($compnos);
         $crimes = Crimes::where('compnos','=', intval($compnos))->get();
 
         if(count($crimes) < 1){
@@ -114,7 +113,6 @@ class CrimesController extends Controller
 
     public function byMonth($month)
     {
-        $month = urldecode($month);
         $crimes = Crimes::where('month','=',intval($month))->get();
 
         if(count($crimes) < 1){
@@ -132,7 +130,6 @@ class CrimesController extends Controller
 
     public function byDay($day)
     {
-        $day = urldecode($day);
         $crimes = Crimes::where('day_week','=',$day)->get();
 
         if(count($crimes) < 1){
