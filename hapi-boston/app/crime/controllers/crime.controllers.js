@@ -3,9 +3,9 @@ class CrimeController {
     async showAllCrimes(request, h) {
         const result = await CrimeService.showAllCrimes();
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -13,9 +13,9 @@ class CrimeController {
         const idCrime = request.params.idCrime;
         const result = await CrimeService.showOneCrime(idCrime);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -23,9 +23,9 @@ class CrimeController {
         const compnos = request.params.compnos;
         const result = await CrimeService.showByCompnos(compnos);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -33,9 +33,9 @@ class CrimeController {
         const weapon = request.params.weapon;
         const result = await CrimeService.showByWeapon(weapon);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -43,9 +43,9 @@ class CrimeController {
         const streetname = request.params.streetname;
         const result = await CrimeService.showByStreetname(streetname);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -53,9 +53,9 @@ class CrimeController {
         const month = request.params.month;
         const result = await CrimeService.showByMonth(month);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -63,9 +63,9 @@ class CrimeController {
         const day = request.params.day;
         const result = await CrimeService.showByDay(day);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -73,9 +73,9 @@ class CrimeController {
         const ucrpart = request.params.ucrpart;
         const result = await CrimeService.showByUcrpart(ucrpart);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -83,9 +83,9 @@ class CrimeController {
         const type = request.params.type;
         const result = await CrimeService.showByType(type);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -93,9 +93,9 @@ class CrimeController {
         const nature = request.params.nature;
         const result = await CrimeService.showByNature(nature);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -103,9 +103,9 @@ class CrimeController {
         const district = request.params.district;
         const result = await CrimeService.showByDistrict(district);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -138,12 +138,13 @@ class CrimeController {
                                                 , x, y, streetname
                                                 , xstreetname, location);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
+    /*
     async update(request, h) {
         const idUser = request.params.idUser;
         const grade = request.payload.grade;
@@ -156,26 +157,15 @@ class CrimeController {
         } else {
             return h.response(result.error).code(result.response.statusCode);
         }
-    };
-
-    async validate(request, h) {
-        const idUser = request.params.idUser;
-        const idAdmin = request.payload.idAdmin;
-        const result = await UserService.validateUser(idUser, idAdmin);
-        if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
-        } else {
-            return h.response(result.error).code(result.response.statusCode);
-        }
-    };
+    };*/
 
     async delete(request, h) {
         const idCrime = request.params.idCrime;
         const result = await CrimeService.delete(idCrime);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "Error", data: result.error}).code(result.response.statusCode);
         }
     };
 
