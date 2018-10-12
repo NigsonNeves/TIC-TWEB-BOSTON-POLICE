@@ -1,9 +1,6 @@
 <template>
   <div id="app">
   <Header></Header>
-  {{ email }}
-  {{ password }}
-  {{ grade }}
   <b-container>
   <router-view></router-view>
 </b-container>
