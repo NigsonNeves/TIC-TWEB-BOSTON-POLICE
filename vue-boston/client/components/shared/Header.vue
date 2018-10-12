@@ -1,9 +1,11 @@
 <template>
 <div id="header">
+  <div>
     <a href="/"><logoHeader></logoHeader></a>
-    <div v-if="isLogin && grade && grade.length && grade == 'chef'">
-        <a><b-button class="btn btn-default">Validate user</b-button></a>
-    </div>
+  </div>
+  <div id="validateUser" v-if="isLogin && grade && grade.length && grade == 'chef'">
+      <a><b-button class="btn btn-default">Validate user</b-button></a>
+  </div>
 </div>
 </template>
 
@@ -39,5 +41,11 @@ export default {
     #header {
         width: 100%;
         padding: 10px;
+        display: flex;
+        align-content: center;
+    }
+    #validateUser {
+        display: flex;
+        align-items: center;
     }
 </style>
