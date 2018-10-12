@@ -2,7 +2,7 @@
 <div id="header">
     <a href="/"><logoHeader></logoHeader></a>
     <div v-if="(email && password && grade) && (email.length && password.length && grade.length) && grade == 'chef'">
-        <a><button>Validate user</button></a>
+        <a><b-button class="btn btn-default">Validate user</b-button></a>
     </div>
 </div>
 </template>

@@ -4,12 +4,16 @@
   {{ email }}
   {{ password }}
   {{ grade }}
+  <b-container>
   <router-view></router-view>
+</b-container>
   </div>
 </template>
 
 <script>
 import Header from './shared/Header'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   components: {
     Header

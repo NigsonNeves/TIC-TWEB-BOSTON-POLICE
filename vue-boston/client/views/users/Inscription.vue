@@ -15,53 +15,41 @@
     </ul>
   </p>
 
-  <p>
-      <label for="grade">Grade</label>
-      <select
-        id="grade"
-        v-model="grade"
-        name="grade"
-      >
-        <option value="chef">Chef</option>
-        <option value="detective">Detective</option>
-        <option value="agent" selected>Agent</option>
-      </select>
-  </p>
+<b-form-select v-model="grade" name="grade" id="grade" :options="options">
+</b-form-select>
+<br>
+<div>
+  <b-input-group prepend="Email" >
+    <b-form-input
+    id="email"
+    v-model="email"
+    type="text"
+    name="email"></b-form-input>
+  </b-input-group>
+</div>
+<br>
+<div>
+  <b-input-group prepend="Password">
+    <b-form-input
+    id="password"
+    v-model="password"
+    type="password"
+    name="password"></b-form-input>
+  </b-input-group>
+</div>
+<br>
+<div>
+  <b-input-group prepend="Confirm password">
+    <b-form-input
+    id="rePassword"
+    v-model="rePassword"
+    type="password"></b-form-input>
+  </b-input-group>
+</div>
+<br>
 
   <p>
-    <label for="email">Email</label>
-    <input
-      id="email"
-      v-model="email"
-      type="text"
-      name="email"
-    >
-  </p>
-  <p>
-    <label for="password">Password</label>
-    <input
-      id="password"
-      v-model="password"
-      type="password"
-      name="password"
-    >
-  </p>
-  <p>
-    <label for="rePassword">Confirm password</label>
-    <input
-      id="rePassword"
-      v-model="rePassword"
-      type="password"
-    >
-  </p>
-
-
-  <p>
-    <input
-      type="button"
-      value="Submit"
-      @click="postInscription"
-    >
+    <b-button @click="postInscription" >Submit </b-button>
   </p>
 
 </div>
@@ -79,9 +67,16 @@ export default {
     grade: null,
     email: null,
     password: null,
-    rePassword: null
+    rePassword: null,
+    selected: ['agent'],
+      options: [
+        { value: 'agent', text: 'Agent' },
+        { value: 'detective', text: 'Detective' },
+        { value: 'chef', text: 'Chef' }
+      ]
     }
   },
+  
   methods:{
     postInscription(e) {
       this.errors = [];

@@ -28,11 +28,7 @@
 
 
   <p>
-    <input
-      type="button"
-      value="Submit"
-      @click="postConnexion"
-    >
+    <b-button @click="postConnexion" >Submit </b-button>
   </p>
 
 </div>

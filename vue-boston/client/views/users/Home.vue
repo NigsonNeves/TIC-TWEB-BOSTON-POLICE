@@ -2,11 +2,11 @@
   <div class="page">
       <logo></logo>
       <div v-if="!email || !password">
-        <a href="/connexion"><button>Connexion</button></a>
-        <a href="/inscription"><button>Inscription</button></a>
+        <a href="/connexion"><b-button>Connexion</b-button></a>
+        <a href="/inscription"><b-button>Inscription</b-button></a>
       </div>
       <div v-if="(email && password) && email.length && password.length">
-        <a @click="$store.commit('signout')"><button>Deconnexion</button></a>
+        <a @click="$store.commit('signout')"><b-button class="btn btn-default">Deconnexion</b-button></a>
       </div>
   </div>
 </template>
