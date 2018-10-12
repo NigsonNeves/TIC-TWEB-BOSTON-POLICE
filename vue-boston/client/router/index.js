@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from '../views/users/Home'
 import Inscription from '../views/users/Inscription'
 import Connexion from '../views/users/Connexion'
+import ValidateUser from '../views/users/ValidateUser'
 import NotFound from '../views/shared/NotFound'
 
 Vue.use(Router)
@@ -26,6 +27,11 @@ export default new Router({
       path: '/connexion',
       component: Connexion,
       name: 'connexion'
+    },
+    {
+      path: '/validateUser',
+      component: ValidateUser,
+      name: 'validateUser'
     },
     {
       path: '*',

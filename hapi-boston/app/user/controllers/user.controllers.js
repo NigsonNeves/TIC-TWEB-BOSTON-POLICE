@@ -3,9 +3,9 @@ class UserController {
     async showAllUsers(request, h) {
         const result = await UserService.showAllUsers();
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -26,7 +26,7 @@ class UserController {
         if (!result.error){
             return h.response({statusCode: result.response.statusCode, message: "success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "error", data: result.error}).code(result.response.statusCode);
         }
     };
 
@@ -61,9 +61,9 @@ class UserController {
         const idAdmin = request.payload.idAdmin;
         const result = await UserService.validateUser(idUser, idAdmin);
         if (!result.error){
-            return h.response(result.body).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "success", data: result.body}).code(result.response.statusCode);
         } else {
-            return h.response(result.error).code(result.response.statusCode);
+            return h.response({statusCode: result.response.statusCode, message: "error", data: result.error}).code(result.response.statusCode);
         }
     };
 
