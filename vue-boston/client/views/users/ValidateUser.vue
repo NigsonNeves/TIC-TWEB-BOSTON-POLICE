@@ -41,7 +41,6 @@ export default {
     errors: [],
     success: [],
     users: null,
-    selected: ['agent'],
     fields: [
         { key: 'email', label: 'Email' },
         { key: 'grade', label: 'Grade' },

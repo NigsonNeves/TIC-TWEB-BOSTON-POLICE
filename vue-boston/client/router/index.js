@@ -5,6 +5,7 @@ import Home from '../views/users/Home'
 import Inscription from '../views/users/Inscription'
 import Connexion from '../views/users/Connexion'
 import ValidateUser from '../views/users/ValidateUser'
+import AddCrime from '../views/crimes/addCrime'
 import NotFound from '../views/shared/NotFound'
 
 Vue.use(Router)
@@ -32,6 +33,11 @@ export default new Router({
       path: '/validateUser',
       component: ValidateUser,
       name: 'validateUser'
+    },
+    {
+      path: '/addCrime',
+      component: AddCrime,
+      name: 'addCrime'
     },
     {
       path: '*',

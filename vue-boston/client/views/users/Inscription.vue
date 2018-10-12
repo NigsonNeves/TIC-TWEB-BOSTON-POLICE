@@ -80,6 +80,7 @@ export default {
   methods:{
     postInscription(e) {
       this.errors = [];
+      this.success = [];
       if (this.grade && this.email && this.password && this.rePassword) {
 
         if (this.password != this.rePassword) {

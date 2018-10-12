@@ -202,7 +202,7 @@ class CrimesController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();;
+            return response()->json($validator->errors(), 422);
         }
 
         $crimes = Crimes::create($request->all());

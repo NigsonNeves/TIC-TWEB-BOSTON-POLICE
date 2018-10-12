@@ -52,6 +52,7 @@ export default {
   methods:{
     postConnexion(e) {
       this.errors = [];
+      this.success = [];
       if (this.email && this.password) {
         axios.post("http://localhost:8080/api/users/verif", querystring.stringify({
           email: this.email,
