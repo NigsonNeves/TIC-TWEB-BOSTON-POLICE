@@ -77,6 +77,7 @@ class CrimesController extends Controller
 
     public function byWeapon($weapon)
     {
+        $weapon = urldecode($weapon);
         $crimes = Crimes::where('weapontype','=',$weapon)->get();
 
         if(count($crimes) < 1){
@@ -88,6 +89,7 @@ class CrimesController extends Controller
 
     public function byStreet($street)
     {
+        $street = urldecode($street);
         $crimes = Crimes::where('streetname','=',$street)->get();
 
         if(count($crimes) < 1){
@@ -99,6 +101,7 @@ class CrimesController extends Controller
 
     public function byType($type)
     {
+        $type = urldecode($type);
         $crimes = Crimes::where('incident_type_description','=',$type)->get();
 
         if(count($crimes) < 1){
@@ -110,7 +113,6 @@ class CrimesController extends Controller
 
     public function byMonth($month)
     {
-
         $crimes = Crimes::where('month','=',intval($month))->get();
 
         if(count($crimes) < 1){
@@ -139,6 +141,7 @@ class CrimesController extends Controller
 
     public function byUcrpart($ucrpart)
     {
+        $ucrpart = urldecode($ucrpart);
         $crimes = Crimes::where('ucrpart','=',$ucrpart)->get();
 
         if(count($crimes) < 1){
@@ -150,6 +153,7 @@ class CrimesController extends Controller
 
     public function byNature($nature)
     {
+        $nature = urldecode($nature);
         $crimes = Crimes::where('naturecode','=',$nature)->get();
 
         if(count($crimes) < 1){
@@ -161,6 +165,7 @@ class CrimesController extends Controller
     
     public function byDistrict($district)
     {
+        $district = urldecode($district);
         $crimes = Crimes::where('reptdistrict','=',$district)->get();
 
         if(count($crimes) < 1){
