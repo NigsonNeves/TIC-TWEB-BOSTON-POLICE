@@ -66,7 +66,7 @@ class CrimesController extends Controller
 
     public function byCompnos($compnos)
     {
-        $crimes = Crimes::where('compnos','=', intval($compnos))->get();
+        $crimes = Crimes::where('compnos','=', $compnos)->get();
 
         if(count($crimes) < 1){
             return response()->json("Compnos not found",404);
