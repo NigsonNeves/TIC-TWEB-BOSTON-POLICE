@@ -130,7 +130,13 @@ class CrimeController {
         const streetname = request.payload.streetname; 
         const xstreetname = request.payload.xstreetname;
         const location = request.payload.location;
-        const result = await CrimeService.create(grade, email, password);
+        const result = await CrimeService.create(compnos, naturecode, incident_type_description
+                                                , main_crimecode, reptdistrict, reportingarea
+                                                , fromdate, weapontype, shooting
+                                                , domestic, shift, year
+                                                , month, day_week, ucrpart
+                                                , x, y, streetname
+                                                , xstreetname, location);
         if (!result.error){
             return h.response(result.body).code(result.response.statusCode);
         } else {

@@ -159,12 +159,35 @@ class CrimeService {
         });
     };
 
-    async create(grade, email, password) {
+    async create(compnos, naturecode, incident_type_description
+                ,main_crimecode,reptdistrict,reportingarea
+                ,fromdate,weapontype,shooting
+                ,domestic,shift,year
+                ,month,day_week,ucrpart
+                ,x,y,streetname
+                ,xstreetname,location) {
         return new Promise((resolve, reject) => {
             Request.post({ url : Config.route.crimeUrl, form: { 
-                grade: grade,
-                email: email,
-                password: password
+                compnos: compnos,
+                naturecode: naturecode,
+                incident_type_description: incident_type_description,
+                main_crimecode: main_crimecode,
+                reptdistrict: reptdistrict,
+                reportingarea: reportingarea,
+                fromdate: fromdate,
+                weapontype: weapontype,
+                shooting: shooting,
+                domestic: domestic,
+                shift: shift,
+                year: year,
+                month: month,
+                day_week: day_week,
+                ucrpart: ucrpart,
+                x: x,
+                y: y,
+                streetname: streetname,
+                xstreetname: xstreetname,
+                location: location,
             }}, 
             function(err , httpResponse, body) {
                 const Result = new ResultApi(body, httpResponse, err);
