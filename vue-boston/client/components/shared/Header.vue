@@ -4,7 +4,7 @@
     <a href="/"><logoHeader></logoHeader></a>
   </div>
   <div id="validateUser" v-if="isLogin && grade && grade.length && grade == 'chef'">
-      <a><b-button class="btn btn-default">Validate user</b-button></a>
+      <a><b-button href="/validateUser" class="btn btn-default">Validate user</b-button></a>
   </div>
 </div>
 </template>
