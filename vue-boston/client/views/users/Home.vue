@@ -1,11 +1,11 @@
 <template>
   <div class="page">
       <logo></logo>
-      <div v-if="!email || !password">
+      <div v-if="!isLogin">
         <a href="/connexion"><b-button>Connexion</b-button></a>
         <a href="/inscription"><b-button>Inscription</b-button></a>
       </div>
-      <div v-if="(email && password) && email.length && password.length">
+      <div v-if="isLogin">
         <a @click="$store.commit('signout')"><b-button class="btn btn-default">Deconnexion</b-button></a>
       </div>
   </div>
@@ -27,6 +27,9 @@ export default {
     },
     grade() {
       return this.$store.state.grade
+    },
+    isLogin() {
+      return this.$store.state.isLogin
     }
   },
 }

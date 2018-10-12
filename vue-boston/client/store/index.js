@@ -16,12 +16,14 @@ const mutations = {
     state.password = payload.password;
     state.grade = payload.grade;
     state.id = payload.id;
+    state.isLogin = true;
   },
   signout(state) {
     state.email = null;
     state.password = null;
     state.grade = null;
     state.id;
+    state.isLogin = false
   }
 }
 

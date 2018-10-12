@@ -1,7 +1,7 @@
 <template>
 <div id="header">
     <a href="/"><logoHeader></logoHeader></a>
-    <div v-if="(email && password && grade) && (email.length && password.length && grade.length) && grade == 'chef'">
+    <div v-if="isLogin && grade && grade.length && grade == 'chef'">
         <a><b-button class="btn btn-default">Validate user</b-button></a>
     </div>
 </div>
@@ -26,6 +26,9 @@ export default {
     },
     id() {
       return this.$store.state.id
+    },
+    isLogin() {
+      return this.$store.state.isLogin
     }
   },
 }

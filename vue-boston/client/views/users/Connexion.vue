@@ -7,24 +7,26 @@
     </ul>
   </p>
 
-  <p>
-    <label for="email">Email</label>
-    <input
-      id="email"
-      v-model="email"
-      type="text"
-      name="email"
-    >
-  </p>
-  <p>
-    <label for="password">Password</label>
-    <input
-      id="password"
-      v-model="password"
-      type="password"
-      name="password"
-    >
-  </p>
+  <div>
+  <b-input-group prepend="Email" >
+    <b-form-input
+    id="email"
+    v-model="email"
+    type="text"
+    name="email"></b-form-input>
+  </b-input-group>
+</div>
+<br>
+<div>
+  <b-input-group prepend="Password">
+    <b-form-input
+    id="password"
+    v-model="password"
+    type="password"
+    name="password"></b-form-input>
+  </b-input-group>
+</div>
+<br>
 
 
   <p>
@@ -70,7 +72,8 @@ export default {
           this.$router.push({ name: "home"});
         })
         .catch(err => {
-          this.errors.push(err);
+          const data = JSON.parse(err.response.data.data)
+          this.errors.push(data);
           e.preventDefault();
           return false;
         })
