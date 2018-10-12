@@ -5,6 +5,7 @@
     },
 
     "route" : {
-        "userUrl": "http://localhost:8081/api/users"
+        "userUrl": "http://localhost:8081/api/users",
+        "crimeUrl": "http://localhost:8083/crimes"
     }
 }

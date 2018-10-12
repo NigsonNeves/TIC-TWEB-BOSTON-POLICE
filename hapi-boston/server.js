@@ -57,7 +57,12 @@ server.register([{
 }, {
     plugin: require('./app/user/routes/user.routes'),
     options: {}
-}]).then(function() {
+   },
+   {
+   plugin: require('./app/crime/routes/crime.routes'),
+   options: {}
+   }
+]).then(function() {
     server.route({
         method:'GET',
         path:'/',
