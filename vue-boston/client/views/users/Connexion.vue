@@ -60,16 +60,18 @@ export default {
           password: this.password
         }))
         .then(response => {
-          const data = response.data.data
-          this.errors.push(data);
-          const userId = data.id;
+          const data = JSON.parse(response.data.data)
+          const email = data.email;
           const grade = data.grade;
           const password = data.password;
+          const id = data.id;
           this.$store.commit('authenticate', {
-              userId,
-              grade: "test",
-              password
+              email,
+              grade,
+              password,
+              id
           });
+          this.$router.push({ name: "home"});
         })
         .catch(err => {
           this.errors.push(err);

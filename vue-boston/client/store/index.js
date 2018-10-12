@@ -1,39 +1,35 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 const state = {
   email: null,
   password: null,
-  grade: null,
-  count: 0
+  grade: null
 }
 
 const mutations = {
   authenticate(state, payload) {
-    localStorage.setItem('grade', payload.grade);
     state.email = payload.email;
     state.password = payload.password;
     state.grade = payload.grade;
+    state.id = payload.id;
   },
-  INCREMENT (state) {
-    state.count++
-  },
-  DECREMENT (state) {
-    state.count--
+  signout(state) {
+    state.email = null;
+    state.password = null;
+    state.grade = null;
+    state.id;
   }
 }
 
 const actions = {
-  incrementAsync ({ commit }) {
-    setTimeout(() => {
-      commit('INCREMENT')
-    }, 200)
-  }
 }
 
 const store = new Vuex.Store({
+  plugins: [createPersistedState()],
   state,
   mutations,
   actions

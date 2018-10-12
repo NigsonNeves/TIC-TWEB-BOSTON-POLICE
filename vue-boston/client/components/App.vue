@@ -1,9 +1,9 @@
 <template>
   <div id="app">
   <Header></Header>
-  {{ storeEmail }}
-  {{ storePassword }}
-  {{ storeGrade }}
+  {{ email }}
+  {{ password }}
+  {{ grade }}
   <router-view></router-view>
   </div>
 </template>
@@ -15,14 +15,17 @@ export default {
     Header
   },
   computed: {
-    storeEmail() {
-      return localStorage.getItem('grade')
+    email() {
+      return this.$store.state.email
     },
-    storePassword() {
+    password() {
       return this.$store.state.password
     },
-    storeGrade() {
+    grade() {
       return this.$store.state.grade
+    },
+    id() {
+      return this.$store.state.id
     }
   },
 }

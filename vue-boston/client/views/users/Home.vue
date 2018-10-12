@@ -1,10 +1,13 @@
 <template>
   <div class="page">
-    <p>
       <logo></logo>
-      <a href="/connexion"><button>Connexion</button></a>
-      <a href="/inscription"><button>Inscription</button></a>
-    </p>
+      <div v-if="!email || !password">
+        <a href="/connexion"><button>Connexion</button></a>
+        <a href="/inscription"><button>Inscription</button></a>
+      </div>
+      <div v-if="(email && password) && email.length && password.length">
+        <a @click="$store.commit('signout')"><button>Deconnexion</button></a>
+      </div>
   </div>
 </template>
 
@@ -14,6 +17,17 @@ import Logo from 'components/form/Logo'
 export default {
   components: {
     Logo
-  }
+  },
+  computed: {
+    email() {
+      return this.$store.state.email
+    },
+    password() {
+      return this.$store.state.password
+    },
+    grade() {
+      return this.$store.state.grade
+    }
+  },
 }
 </script>

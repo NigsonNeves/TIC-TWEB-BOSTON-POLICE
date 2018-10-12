@@ -81,6 +81,25 @@ exports.plugin = {
         });
 
         server.route({
+            method: 'PUT',
+            path: '/api/users/validate/{idUser}',
+            config: {
+                payload: {
+                    parse: true
+                },
+                validate: {
+                    params: {
+                        idUser: Joi.number()
+                    },
+                    payload: Joi.object({
+                        idAdmin: Joi.number(),
+                    })
+                }
+            },
+            handler: UserController.validate
+        });
+
+        server.route({
             method: 'DELETE',
             path: '/api/users/{idUser}',
             config: {
